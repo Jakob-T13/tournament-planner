@@ -1,18 +1,5 @@
 import os
 
-def check_for_password():
-    try:
-        pwf = open("password.txt", "rt")
-        pw = pwf.read()
-        pwf.close()
-    except FileNotFoundError:
-        pw = input("No admin password found. Please set a password: ")
-        pwf = open("password.txt", "wt")
-        pwf.write(pw)
-        pwf.close()
-        
-    return pw
-
 def load_menus():
     menuf = open("menus.txt", "rt")
     menutext = menuf.read()
@@ -78,3 +65,25 @@ def entry_menu(tdict):
             else:
                 print(f"Failure: %s is not in slot %d. % {ui, uin}")
             input("Press Enter to continue.")
+        elif ui == "3":
+            uin = int(input(f"Choose a slot (1-%d):  % {tsize}"))
+            if uin < 1 or uin > tsize:
+                print("Error: invalid slot.")
+            else:
+                for n in range(-5,0):
+                    try:
+                        print(f"%d: %s % {uin+n, working_dict[uin+n]}")
+                    except:
+                        print("")
+                print(f"%d: %s % {uin, working_dict[uin]}")
+                for n in range(1,6):
+                    try:
+                        print(f"%d: %s % {uin+n, working_dict[uin+n]}")
+                    except:
+                        print("")
+            input("Press Enter to continue.")
+        elif ui == "4":
+            return working_dict
+        else:
+            input("Command not recognized. Press 'Enter' to try again.")
+    return None
