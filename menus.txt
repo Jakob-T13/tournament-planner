@@ -1,0 +1,21 @@
+ FILE MENU
+===========
+Select an option from the list below:
+(1) Start a new tournament
+(2) Open an existing tournament
+
+;
+ TOURNAMENT ENTRY
+==================
+Select an option from the list below:
+(1) Sign up a new entrant
+(2) Remove an entrant
+(3) View Participants
+
+;
+ ADMIN MENU
+============
+Select an option from the list below:
+(1) Save to file
+(2) Return to Entry menu
+(3) Exit
