@@ -23,13 +23,13 @@ def file_menu():
     menu_loop = True
     while menu_loop:
         os.system('cls')
-        print(load_menus[0])
+        print(load_menus()[0])
         ui = str(input("!> "))
         if ui == "1":
             return "new"
         elif ui == "2":
             return "open"
         else:
-            print("Command not recognized. Please try again.")
+            input("Command not recognized. Press 'Enter' to try again.")
     return "error"
     
