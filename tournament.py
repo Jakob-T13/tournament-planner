@@ -19,6 +19,45 @@ def file_menu():
             input("Command not recognized. Press 'Enter' to try again.")
     return None
     
+def open_tourn(mode):
+    if mode == "new":
+        invalid_input = True
+        dict_size = 0
+        while invalid_input:
+            ui = int(input("Enter desired number of participants: "))
+            if ui < 1:
+                print("You must have at least 1 participant.")
+            else:
+                dict_size = ui
+                invalid_input = False
+        working_dict = {}
+        for i in range(dict_size):
+            working_dict[i+1] = None
+        return working_dict
+    elif mode == "open":
+        invalid_input = True
+        working_dict = {}
+        while invalid_input:
+            fname = input("Enter the full file name of the file you want to open: ")
+            try:
+                csv = open(fname, "rt")
+                csv_txt = csv.readlines()
+                csv.close()
+                csv_txt.pop(0)
+                for i in range(len(csv_txt)):
+                    csv_txt[i].split(",")
+                    csv_txt[i][0] = int(csv_txt[i][0])
+                    working_dict[csv_txt[i][0]] = csv_txt[i][1]
+                print("Successfully loaded " + fname)
+                return working_dict
+            except:
+                input("Failed to find file. Press 'Enter' to continue...")
+                return None
+    else:
+        print("An error has occurred.")
+        return None
+    return None
+    
 def entry_menu(tdict):
     working_dict = tdict
     tsize = len(tdict)
@@ -114,3 +153,6 @@ def admin_menu(tdict):
         else:
             input("Command not recognized. Press 'Enter' to try again.")
     return None
+
+def main():
+    
