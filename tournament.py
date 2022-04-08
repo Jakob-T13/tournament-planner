@@ -87,3 +87,14 @@ def entry_menu(tdict):
         else:
             input("Command not recognized. Press 'Enter' to try again.")
     return None
+    
+def admin_menu(tdict):
+    working_dict = tdict
+    while True:
+        os.system('cls')
+        print(load_menus()[2])
+        ui = input("@> ")
+        if ui == "1":
+            savename = input("Enter file name to save to (no extension): ")
+            savename = savename + ".csv"
+            
