@@ -17,7 +17,7 @@ def file_menu():
             return "open"
         else:
             input("Command not recognized. Press 'Enter' to try again.")
-    return "error"
+    return None
     
 def entry_menu(tdict):
     working_dict = tdict
@@ -93,8 +93,24 @@ def admin_menu(tdict):
     while True:
         os.system('cls')
         print(load_menus()[2])
-        ui = input("@> ")
+        ui = str(input("@> "))
         if ui == "1":
             savename = input("Enter file name to save to (no extension): ")
             savename = savename + ".csv"
-            
+            print(f"Generating csv and saving to %s... % {savename}")
+            dictkeys = working_dict.keys()
+            dictvals = working_dict.values()
+            csv_txt = '"slot","name"\n'
+            for i in range(len(dictkeys)):
+                csv_txt += f'%d,"%s"\n % {dictkeys[i], dictvals[i]}'
+            savef = open(savename, "wt")
+            savef.write(csv_txt)
+            savef.close()
+            input("Save successful. Press Enter to continue...")
+        elif ui == "2":
+            return "entry"
+        elif ui == "3":
+            return "exit"
+        else:
+            input("Command not recognized. Press 'Enter' to try again.")
+    return None
